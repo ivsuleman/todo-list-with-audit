@@ -1,19 +1,36 @@
 {
   "name": "todo-list-with-audit",
   "version": "1.0.0",
-  "description": "A Todo List SPA which has the option of tracking actions and playing them back.",
+  "description": "Develop a TO DO ReactJS SPA proposing to the user the followings functionalities;",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open --mode development",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ivsuleman/todo-list-with-audit.git"
   },
-  "author": "Irfan Suleman",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ivsuleman/todo-list-with-audit/issues"
   },
-  "homepage": "https://github.com/ivsuleman/todo-list-with-audit#readme"
+  "homepage": "https://github.com/ivsuleman/todo-list-with-audit#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.1"
+  }
 }
