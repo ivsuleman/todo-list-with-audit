@@ -1,0 +1,19 @@
+{
+  "name": "todo-list-with-audit",
+  "version": "1.0.0",
+  "description": "A Todo List SPA which has the option of tracking actions and playing them back.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivsuleman/todo-list-with-audit.git"
+  },
+  "author": "Irfan Suleman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivsuleman/todo-list-with-audit/issues"
+  },
+  "homepage": "https://github.com/ivsuleman/todo-list-with-audit#readme"
+}
