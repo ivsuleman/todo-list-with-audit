@@ -5,9 +5,9 @@ const TodoList = ({ todos, deleteTodo }) => {
     todos.map(todo => {
       return (
         <div className="collection-item" key={todo.id}>
-          <span>
-            <a class="btn-floating btn-small waves-effect waves-light red">
-              <i class="material-icons">delete_forever</i>
+          <span onClick={() => deleteTodo(todo.id)}>
+            <a className="btn-floating btn-small waves-effect waves-light red">
+              <i className="material-icons">delete_forever</i>
             </a>
           </span>
           <span>{todo.name}</span>
@@ -17,7 +17,7 @@ const TodoList = ({ todos, deleteTodo }) => {
       );
     })
   ) : (
-    <p className="center">You have ToDo left, Boom!</p>
+    <p className="center">You have No ToDos left, Boom!</p>
   );
 
   return <div className="todoList collection">{todoList}</div>;
