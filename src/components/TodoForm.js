@@ -33,6 +33,7 @@ class TodoForm extends Component {
             onChange={this.handleChange}
             value={this.state.name}
           />
+
           <label>Description:</label>
           <input
             type="text"
@@ -41,12 +42,11 @@ class TodoForm extends Component {
             value={this.state.description}
           />
           <button
-            className="btn waves-effect waves-light"
+            className="btn-floating btn-large waves-effect waves-light blue"
             type="submit"
             name="action"
           >
             <i className="material-icons right">add</i>
-            Add ToDo
           </button>
         </form>
       </div>

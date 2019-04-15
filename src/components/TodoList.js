@@ -10,8 +10,13 @@ const TodoList = ({ todos, deleteTodo }) => {
               <i className="material-icons">delete_forever</i>
             </a>
           </span>
-          <span>{todo.name}</span>
-          <span>{" | "}</span>
+          <span>
+            <a className="btn-floating btn-small waves-effect waves-light green">
+              <i className="material-icons">check</i>
+            </a>
+          </span>
+          <span>{todo.date}</span>
+          <span>{` ${todo.name} | `}</span>
           <span>{todo.description}</span>
         </div>
       );

@@ -11,13 +11,15 @@ class App extends Component {
         id: 1,
         date: "01/01/2001",
         name: "milk",
-        description: "buy 1 gallon full fat milk"
+        description: "buy 1 gallon full fat milk",
+        completed: false
       },
       {
         id: 2,
         date: "02/02/2002",
         name: "football",
-        description: "watch lfc vs chelsea on sunday 2pm"
+        description: "watch lfc vs chelsea on sunday 2pm",
+        completed: false
       }
     ]
   };
@@ -38,7 +40,8 @@ class App extends Component {
 
   addTodo = todo => {
     todo.id = this.generateUniqueId();
-    todo.date = Date.now();
+    todo.date = new Date().toLocaleDateString("en-GB");
+    todo.completed = false;
     let todos = [...this.state.todos, todo];
     this.setState({
       todos
