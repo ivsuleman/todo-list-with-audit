@@ -17,31 +17,46 @@ class TodoList extends Component {
                 <i className="material-icons">delete_forever</i>
               </a>
             </span>
-            <span>
-              <label>
-                <input
-                  type="checkbox"
-                  className="filled-in"
-                  checked={todo.completed}
-                  onChange={() => this.props.toggleTodo(todo.id)}
-                />
-                <span />
-              </label>
+            <span onClick={() => this.props.editTodo(todo.id)}>
+              <a className="btn-floating btn-small waves-effect waves-light orange">
+                <i className="material-icons">edit</i>
+              </a>
             </span>
-            <span>{todo.date}</span>
+
             {todo.editMode ? (
-              <div>
-                <input type="text" defaultValue={todo.name} />
+              <span>
+                <span>{todo.date}</span>
+                <input type="text" defaultValue={` | ${todo.name} | `} />
                 <input type="text" defaultValue={todo.description} />
-              </div>
+                <span>
+                  <label>
+                    <input
+                      type="checkbox"
+                      className="filled-in"
+                      checked={todo.completed}
+                      onChange={() => this.props.toggleTodo(todo.id)}
+                    />
+                    <span />
+                  </label>
+                </span>
+              </span>
             ) : (
-              <div
-                onDoubleClick={() => this.props.editTodo(todo.id)}
-                style={todo.completed ? completedStyle : null}
-              >
-                <span>{` ${todo.name} | `}</span>
+              <span style={todo.completed ? completedStyle : null}>
+                <span>{todo.date}</span>
+                <span>{` | ${todo.name} | `}</span>
                 <span>{todo.description}</span>
-              </div>
+                <span>
+                  <label>
+                    <input
+                      type="checkbox"
+                      className="filled-in"
+                      checked={todo.completed}
+                      onChange={() => this.props.toggleTodo(todo.id)}
+                    />
+                    <span />
+                  </label>
+                </span>
+              </span>
             )}
           </div>
         );
