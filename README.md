@@ -9,7 +9,7 @@ Develop a TO DO ReactJS SPA proposing to the user the followings functionalities
 
 5. Recording the actions (Add, Update, Remove) of the user when using the SPA;
 6. Stop the recording;
-7. lay what has been recorded by the user;
+7. Play what has been recorded by the user;
 8. Clear to clean what has been recorded.
 
 
