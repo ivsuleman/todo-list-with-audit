@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 
-import Audit from "../components/Audit";
+import AuditBar from "../components/AuditBar";
 import TodoList from "../components/TodoList";
 import Todoform from "../components/TodoForm";
 import AuditList from "../components/AuditList";
 
 class App extends Component {
   state = {
-    auditMode: false,
+    record: false,
+    play: false,
 
     audit: [],
 
@@ -42,7 +43,7 @@ class App extends Component {
     todo.completed = false;
     todo.editMode = false;
 
-    if (this.state.auditMode === true) {
+    if (this.state.record === true) {
       this.addToAudit(todo, "add", new Date());
     }
 
@@ -57,8 +58,7 @@ class App extends Component {
       return todo.id === id;
     });
 
-    if (this.state.auditMode === true) {
-      console.log(todo[0]);
+    if (this.state.record === true) {
       this.addToAudit(todo[0], "delete", new Date());
     }
 
@@ -69,9 +69,12 @@ class App extends Component {
     this.setState({
       todos
     });
+    console.log("finsihed delete of todos");
   };
 
   editTodo = (editedTodo, id) => {
+    console.log("clicked submit edit");
+    this.deleteTodo(id);
     this.addTodo(editedTodo);
   };
 
@@ -104,10 +107,10 @@ class App extends Component {
     });
   };
 
-  toggleAuditRecord = () => {
-    console.log(this.state.auditMode);
-    this.state.auditMode = !this.state.auditMode;
-    console.log(this.state.auditMode);
+  toggleRecord = () => {
+    this.setState({
+      record: !this.state.record
+    });
   };
 
   addToAudit = (todo, action, date) => {
@@ -119,8 +122,10 @@ class App extends Component {
     });
   };
 
-  playAudit = () => {
-    console.log("play audit");
+  togglePlay = () => {
+    this.setState({
+      play: !this.state.play
+    });
   };
 
   clearAudit = () => {
@@ -133,11 +138,11 @@ class App extends Component {
   };
 
   render() {
+    const isPLayMode = this.state.play;
     return (
       <div className="todo-app container">
         <h1 className="center blue-text">ToDo List with Auditing</h1>
         <Todoform addTodo={this.addTodo} />
-
         <TodoList
           todos={this.state.todos}
           deleteTodo={this.deleteTodo}
@@ -146,12 +151,15 @@ class App extends Component {
           addTodo={this.addTodo}
           editTodo={this.editTodo}
         />
-        <Audit
-          auditMode={this.state.auditMode}
-          toggleAuditRecord={this.toggleAuditRecord}
+        <AuditBar
+          record={this.state.record}
+          playMode={this.state.play}
+          togglePlay={this.togglePlay}
+          toggleRecord={this.toggleRecord}
           clearAudit={this.clearAudit}
         />
-        <AuditList audit={this.state.audit} />
+        {console.log("isPLayMode", isPLayMode)}
+        {isPLayMode ? <AuditList audit={this.state.audit} /> : null}
       </div>
     );
   }

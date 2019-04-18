@@ -87,20 +87,20 @@ class TodoList extends Component {
               </div>
             ) : (
               <span style={todo.completed ? completedStyle : null}>
-                <span>{todo.date}</span>
-                <span>{` | ${todo.name} | `}</span>
-                <span>{todo.description}</span>
                 <span>
                   <label>
                     <input
                       type="checkbox"
-                      className="filled-in"
+                      className="filled-in valign-wrapper"
                       checked={todo.completed}
                       onChange={() => this.props.toggleTodoCompleted(todo.id)}
                     />
                     <span />
                   </label>
                 </span>
+                <span>{todo.date}</span>
+                <span>{` | ${todo.name} | `}</span>
+                <span>{todo.description}</span>
               </span>
             )}
           </div>
@@ -109,7 +109,12 @@ class TodoList extends Component {
     ) : (
       <p className="center">You have No ToDos left, Boom!</p>
     );
-    return <div className="todoList collection">{todoList}</div>;
+    return (
+      <div className="collection">
+        <h5 className="center blue-text">ToDo List</h5>
+        {todoList}
+      </div>
+    );
   }
 }
 

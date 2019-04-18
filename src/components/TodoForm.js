@@ -25,11 +25,13 @@ class TodoForm extends Component {
   render() {
     return (
       <div>
+        <h5 className="center blue-text">Add a ToDo</h5>
         <form onSubmit={this.handleSubmit}>
           <label>Name:</label>
           <input
             type="text"
             name="name"
+            required="required"
             onChange={this.handleChange}
             value={this.state.name}
           />
@@ -38,15 +40,16 @@ class TodoForm extends Component {
           <input
             type="text"
             name="description"
+            required="required"
             onChange={this.handleChange}
             value={this.state.description}
           />
           <button
-            className="btn-floating btn-large waves-effect waves-light blue"
+            className="btn-floating btn-medium waves-effect waves-light blue"
             type="submit"
             name="action"
           >
-            <i className="material-icons right">add</i>
+            <i className="material-icons left">add</i>
           </button>
         </form>
       </div>

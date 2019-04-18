@@ -4,7 +4,7 @@ Develop a TO DO ReactJS SPA proposing to the user the followings functionalities
 ## Features
 1. List all the existing TO DOs;
 2. Add a new TO DO;
-3. Update an existing TO DO;
+3. Update an existing TO DO; ***
 4. Remove a TO DO;
 
 5. Recording the actions (Add, Update, Remove) of the user when using the SPA;
