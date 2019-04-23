@@ -5,6 +5,8 @@ import TodoList from "../components/TodoList";
 import Todoform from "../components/TodoForm";
 import AuditList from "../components/AuditList";
 
+import "../styles/app.css";
+
 class App extends Component {
   state = {
     record: false,
@@ -141,7 +143,15 @@ class App extends Component {
     const isPLayMode = this.state.play;
     return (
       <div className="todo-app container">
-        <h1 className="center blue-text">ToDo List with Auditing</h1>
+        <h1 className="center white-text">ToDo List with Auditing</h1>
+        <AuditBar
+          record={this.state.record}
+          playMode={this.state.play}
+          togglePlay={this.togglePlay}
+          toggleRecord={this.toggleRecord}
+          clearAudit={this.clearAudit}
+        />
+        {isPLayMode ? <AuditList audit={this.state.audit} /> : null}
         <Todoform addTodo={this.addTodo} />
         <TodoList
           todos={this.state.todos}
@@ -151,15 +161,6 @@ class App extends Component {
           addTodo={this.addTodo}
           editTodo={this.editTodo}
         />
-        <AuditBar
-          record={this.state.record}
-          playMode={this.state.play}
-          togglePlay={this.togglePlay}
-          toggleRecord={this.toggleRecord}
-          clearAudit={this.clearAudit}
-        />
-        {console.log("isPLayMode", isPLayMode)}
-        {isPLayMode ? <AuditList audit={this.state.audit} /> : null}
       </div>
     );
   }

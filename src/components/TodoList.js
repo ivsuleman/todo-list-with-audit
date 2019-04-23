@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../styles/list.css";
 
 class TodoList extends Component {
   state = {
@@ -51,7 +52,10 @@ class TodoList extends Component {
       this.props.todos.map(todo => {
         return (
           <div className="collection-item" key={todo.id}>
-            <span onClick={() => this.props.deleteTodo(todo.id)}>
+            <span
+              className="deleteButton"
+              onClick={() => this.props.deleteTodo(todo.id)}
+            >
               {deleteButton}
             </span>
             <span onClick={() => this.props.togleTodoEdit(todo.id)}>
@@ -87,20 +91,17 @@ class TodoList extends Component {
               </div>
             ) : (
               <span style={todo.completed ? completedStyle : null}>
-                <span>
-                  <label>
-                    <input
-                      type="checkbox"
-                      className="filled-in valign-wrapper"
-                      checked={todo.completed}
-                      onChange={() => this.props.toggleTodoCompleted(todo.id)}
-                    />
-                    <span />
-                  </label>
-                </span>
-                <span>{todo.date}</span>
-                <span>{` | ${todo.name} | `}</span>
-                <span>{todo.description}</span>
+                <label>
+                  <input
+                    type="checkbox"
+                    className="filled-in valign-wrapper"
+                    checked={todo.completed}
+                    onChange={() => this.props.toggleTodoCompleted(todo.id)}
+                  />
+                  <span />
+                </label>
+
+                {`${todo.date} | ${todo.name} | ${todo.description}`}
               </span>
             )}
           </div>
@@ -110,7 +111,7 @@ class TodoList extends Component {
       <p className="center">You have No ToDos left, Boom!</p>
     );
     return (
-      <div className="collection">
+      <div className="todo-list collection">
         <h5 className="center blue-text">ToDo List</h5>
         {todoList}
       </div>
