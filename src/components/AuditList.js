@@ -10,10 +10,12 @@ class AuditList extends Component {
           <div className="collection-item" key={audit.id}>
             <span>action date: {audit.date}</span>
             <span> | {audit.action}</span>
-            <span> | {audit.id}</span>
-            <span> | {audit.name}</span>
-            <span> | {audit.description}</span>
-            <span> | creation date: {audit.date}</span>
+            <div>
+              <span>{audit.id}</span>
+              <span> | {audit.name}</span>
+              <span> | {audit.description}</span>
+              <span> | creation date: {audit.date}</span>
+            </div>
           </div>
         );
       })

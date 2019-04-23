@@ -45,14 +45,14 @@ class App extends Component {
     todo.completed = false;
     todo.editMode = false;
 
-    if (this.state.record === true) {
-      this.addToAudit(todo, "add", new Date());
-    }
-
     let newTodos = [...this.state.todos, todo];
     this.setState({
       todos: newTodos
     });
+
+    if (this.state.record === true) {
+      this.addToAudit(todo, "ADDED", new Date());
+    }
   };
 
   deleteTodo = id => {
@@ -60,24 +60,47 @@ class App extends Component {
       return todo.id === id;
     });
 
-    if (this.state.record === true) {
-      this.addToAudit(todo[0], "delete", new Date());
-    }
-
     const todos = this.state.todos.filter(todo => {
       return todo.id !== id;
     });
 
     this.setState({
-      todos
+      todos: todos
     });
-    console.log("finsihed delete of todos");
+
+    if (this.state.record === true) {
+      this.addToAudit(todo[0], "DELETED", new Date());
+    }
   };
 
-  editTodo = (editedTodo, id) => {
-    console.log("clicked submit edit");
-    this.deleteTodo(id);
-    this.addTodo(editedTodo);
+  editTodo = (editedTodoId, editedTodo) => {
+    let todos = [...this.state.todos];
+
+    const editedTodos = this.state.todos.map(todo => {
+      if (todo.id === editedTodoId) {
+        if (editedTodo.name !== "") {
+          todo.name = editedTodo.name;
+        }
+        if (editedTodo.description !== "") {
+          todo.description = editedTodo.description;
+        }
+        todo.date = new Date().toLocaleDateString("en-GB");
+        todo.editMode = false;
+      }
+      return todo;
+    });
+
+    this.setState({
+      todos: editedTodos
+    });
+
+    const todo = this.state.todos.filter(todo => {
+      return todo.id === editedTodoId;
+    });
+
+    if (this.state.record === true) {
+      this.addToAudit(todo[0], "EDITED", new Date());
+    }
   };
 
   toggleTodoCompleted = id => {
@@ -131,7 +154,6 @@ class App extends Component {
   };
 
   clearAudit = () => {
-    console.log("clearing audit");
     let audit = [];
 
     this.setState({
