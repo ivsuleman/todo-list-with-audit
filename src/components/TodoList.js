@@ -14,9 +14,9 @@ class TodoList extends Component {
     });
   };
 
-  handleSubmit = (e, id) => {
+  handleSubmit = (e, todoId) => {
     e.preventDefault();
-    this.props.editTodo(this.state, id);
+    this.props.editTodo(todoId, this.state);
   };
 
   render() {
@@ -36,16 +36,6 @@ class TodoList extends Component {
       <a className="btn-floating btn-small waves-effect waves-light orange">
         <i className="material-icons">edit</i>
       </a>
-    );
-
-    const submitEditButton = (
-      <button
-        className="btn-floating btn-small waves-effect waves-light green"
-        type="submit"
-        name="action"
-      >
-        <i className="material-icons right">done</i>
-      </button>
     );
 
     const todoList = this.props.todos.length ? (
