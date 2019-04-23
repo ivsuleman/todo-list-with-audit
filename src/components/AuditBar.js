@@ -58,10 +58,14 @@ class AuditBar extends Component {
           </span>
         </div>
         {isRecordMode ? (
-          <h6 className="center red-text">Recording is on!</h6>
+          <h6 className="center red-text">
+            (click on red button to stop recording ToDo actions)
+          </h6>
         ) : null}
         {isPlayMode ? (
-          <h6 className="center green-text">Audit List Playing</h6>
+          <h6 className="center green-text">
+            (click on green button to stop showing the ToDo actions audit)
+          </h6>
         ) : null}
       </div>
     );

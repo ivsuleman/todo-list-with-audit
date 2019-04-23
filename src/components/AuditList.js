@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Scroll from "./Scroll";
+import "../styles/audit.css";
 
 class AuditList extends Component {
   render() {
@@ -20,11 +22,10 @@ class AuditList extends Component {
     );
 
     return (
-      <div className="collection">
+      <div className="audit-list collection">
         <div>
-          {" "}
           <h5 className="center blue-text">ToDo Audit List</h5>
-          {auditList}
+          <Scroll>{auditList}</Scroll>
         </div>
       </div>
     );
