@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../styles/audit.css";
 
 class AuditBar extends Component {
   state = {
@@ -30,11 +31,12 @@ class AuditBar extends Component {
           <span onClick={() => this.clickRecord()}>
             {this.state.record ? (
               <a className="waves-effect waves-light btn-large red">
-                <i className="material-icons">stop</i>
+                <i className="material-icons right">stop</i>stop recording
               </a>
             ) : (
               <a className="waves-effect waves-light btn-large red">
-                <i className="material-icons">fiber_manual_record</i>
+                <i className="material-icons right">fiber_manual_record</i>
+                record
               </a>
             )}
           </span>
@@ -42,31 +44,21 @@ class AuditBar extends Component {
           <span onClick={() => this.clickPlay()}>
             {this.state.play ? (
               <a className="waves-effect waves-light btn-large">
-                <i className="material-icons">stop</i>
+                <i className="material-icons right">stop</i>stop playing
               </a>
             ) : (
               <a className="waves-effect waves-light btn-large">
-                <i className="material-icons">play_circle_outline</i>
+                <i className="material-icons right">play_circle_outline</i>play
               </a>
             )}
           </span>
 
           <span onClick={() => this.props.clearAudit()}>
             <a className="waves-effect waves-light btn-large orange">
-              <i className="material-icons">cancel</i>
+              <i className="material-icons right">cancel</i>clear
             </a>
           </span>
         </div>
-        {isRecordMode ? (
-          <h6 className="center red-text">
-            (click on red button to stop recording ToDo actions)
-          </h6>
-        ) : null}
-        {isPlayMode ? (
-          <h6 className="center green-text">
-            (click on green button to stop showing the ToDo actions audit)
-          </h6>
-        ) : null}
       </div>
     );
   }

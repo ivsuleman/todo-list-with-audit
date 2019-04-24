@@ -84,7 +84,6 @@ class TodoList extends Component {
                 <label>
                   <input
                     type="checkbox"
-                    className="filled-in valign-wrapper"
                     checked={todo.completed}
                     onChange={() => this.props.toggleTodoCompleted(todo.id)}
                   />
